@@ -44,6 +44,15 @@
             max-height: 100%; /* 视频的最大高度为容器的100% */
             object-fit: contain; /* 保持比例并尽可能放大 */
         }
+
+        .video-overlay {
+            position: absolute; /* 设置绝对定位 */
+            top: 10px;  /* 调整文字与顶部的距离 */
+            left: 10px;  /* 调整文字与左边的距离 */
+            color: white; /* 文字颜色 */
+            background-color: rgba(0, 0, 0, 0.5); /* 文字背景颜色，带透明度 */
+            padding: 5px; /* 文字背景的内边距 */
+        }
         
         /* 响应式设计：在较小的屏幕上，调整视频宽度 */
         @media (max-width: 768px) {
@@ -118,23 +127,31 @@
     </div>
     
     <div class="videos-container">
-        <h3>mimoji</h3>
         <div class="video-item">
             <video controls>
                 <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/avatar/mimoji.mp4" type="video/mp4">
             </video>
+            <div class="video-overlay">
+                <p>mimoji</p>
+            </div>
         </div>
-        <h3>omoji</h3>
+        
         <div class="video-item">
             <video controls>
                 <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/avatar/omoji.mp4" type="video/mp4">
             </video>
+            <div class="video-overlay">
+                <p>omoji</p>
+            </div>
         </div>
-        <h3>hornor</h3>
+        
         <div class="video-item">
-        <video controls>
-            <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/avatar/hornor.mp4" type="video/mp4">
-        </video>
+            <video controls>
+                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/avatar/hornor.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay">
+                <p>hornor</p>
+            </div>
         </div>
     </div>
     
