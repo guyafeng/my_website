@@ -23,53 +23,76 @@
 
         .videos-container {
             display: flex;
-            flex-wrap: wrap; /*允许换行*/
-            justify-content: space-around; /* 平均分配剩余空间 */
+            flex-wrap: wrap;
+            /*允许换行*/
+            justify-content: space-around;
+            /* 平均分配剩余空间 */
             gap: 10px;
         }
-        
+
         .video-item {
-            flex: 0 0 30%; /* 设置每个视频的宽度，可以根据需要调整 */
-            margin-bottom: 100px; /* 设置底部外边距 */
-            display: flex; /*使视频居中*/
-            align-items: center;  /*使视频垂直居中*/
-            justify-content: center;  /*使视频水平居中*/
-            overflow: hidden; /* 裁剪溢出部分 */
-            max-width: 500px;  /* 设置容器的最大宽度 */
-            max-height: 500px;  /* 设置容器的最大高度 */
+            flex: 0 0 30%;
+            /* 设置每个视频的宽度，可以根据需要调整 */
+            margin-bottom: 100px;
+            /* 设置底部外边距 */
+            display: flex;
+            /*使视频居中*/
+            align-items: center;
+            /*使视频垂直居中*/
+            justify-content: center;
+            /*使视频水平居中*/
+            overflow: hidden;
+            /* 裁剪溢出部分 */
+            max-width: 500px;
+            /* 设置容器的最大宽度 */
+            max-height: 500px;
+            /* 设置容器的最大高度 */
             position: relative;
             padding-top: 5%;
         }
-        
+
         .video-item video {
-            max-width: 100%; /* 视频的最大宽度为容器的100% */
-            max-height: 100%; /* 视频的最大高度为容器的100% */
-            object-fit: contain; /* 保持比例并尽可能放大 */
+            max-width: 100%;
+            /* 视频的最大宽度为容器的100% */
+            max-height: 100%;
+            /* 视频的最大高度为容器的100% */
+            object-fit: contain;
+            /* 保持比例并尽可能放大 */
         }
 
         .video-overlay {
-             position: absolute; /* 设置绝对定位 */
-             color: black; /* 文字颜色 */
-             background-color: rgba(0, 0, 0, 0); /* 文字背景颜色，带透明度 */
-             padding: 5px; /* 文字背景的内边距 */
-             display: block; /*确保叠加层占据整个容器*/
-             top: 0; 
-             left: 50%; /* 水平居中 */
-             transform: translateX(-50%); /* 将元素水平居中 */
-             text-align: center; /* 文字水平居中 */
-             font-size: 30px;
-             font-weight: bold;
+            position: absolute;
+            /* 设置绝对定位 */
+            color: black;
+            /* 文字颜色 */
+            background-color: rgba(0, 0, 0, 0);
+            /* 文字背景颜色，带透明度 */
+            padding: 5px;
+            /* 文字背景的内边距 */
+            display: block;
+            /*确保叠加层占据整个容器*/
+            top: 0;
+            left: 50%;
+            /* 水平居中 */
+            transform: translateX(-50%);
+            /* 将元素水平居中 */
+            text-align: center;
+            /* 文字水平居中 */
+            font-size: 30px;
+            font-weight: bold;
         }
-        
+
         /* 响应式设计：在较小的屏幕上，调整视频宽度 */
         @media (max-width: 768px) {
             .video-item {
-                flex: 0 0 48%; /* 在小屏幕上，每行显示2个视频 */
+                flex: 0 0 48%;
+                /* 在小屏幕上，每行显示2个视频 */
             }
         }
+
         @media (max-width: 480px) {
             .video-item {
-              flex: 0 0 100%;
+                flex: 0 0 100%;
             }
         }
 
@@ -94,74 +117,142 @@
         project
     </header>
 
-    <div class="content">
-        <h2>Gaussion Blendshape</h2>
-        <div class="video-container">
-            <video controls>
-                <source src="./landmark/more_results_id3.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-    </div>
-    
-    <h2>Landmark</h2>
-    <div class="videos-grid-container">
+    <h1>Landmark</h1>
+    <div class="videos-container">
         <video controls>
-            <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/landmark/subject1.mp4" type="video/mp4">
+            <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/landmark/subject1.mp4"
+                type="video/mp4">
         </video>
         <video controls>
-            <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/landmark/subject2.mp4" type="video/mp4">
+            <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/landmark/subject2.mp4"
+                type="video/mp4">
         </video>
         <video controls>
-            <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/landmark/subject3.mp4" type="video/mp4">
+            <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/landmark/subject3.mp4"
+                type="video/mp4">
         </video>
     </div>
-    
-    <h2>Mesh</h2>
-    
-    <h2>Avatar</h2>
+
+    <h1>Mesh</h1>
+    <div class="videos-container">
+        <video controls>
+            <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/mesh/mesh_fullface_subject1.mp4"
+                type="video/mp4">
+        </video>
+        <video controls>
+            <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/mesh/mesh_fullface_subject2.mp4"
+                type="video/mp4">
+        </video>
+        <video controls>
+            <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/mesh/mesh_fullface_subject3.mp4"
+                type="video/mp4">
+        </video>
+        <video controls>
+            <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/mesh/mesh_fullface_subject4.mp4"
+                type="video/mp4">
+        </video>
+    </div>
+
+    <div class="videos-container">
+        <video controls>
+            <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/mesh/mesh3d_subject1.mp4"
+                type="video/mp4">
+        </video>
+        <video controls>
+            <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/mesh/mesh3d_subject2.mp4"
+                type="video/mp4">
+        </video>
+        <video controls>
+            <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/mesh/mesh3d_subject3.mp4"
+                type="video/mp4">
+        </video>
+        <video controls>
+            <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/mesh/mesh3d_subject4.mp4"
+                type="video/mp4">
+        </video>
+    </div>
+
+
+    <h1>Avatar</h1>
     <div class="videos-container">
         <div class="video-item">
             <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/avatar/avatar.mp4" type="video/mp4">
+                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/avatar/avatar.mp4"
+                    type="video/mp4">
             </video>
         </div>
         <div class="video-item">
             <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/avatar/avatar_compare.mp4" type="video/mp4">
+                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/avatar/avatar_compare.mp4"
+                    type="video/mp4">
             </video>
         </div>
     </div>
-    
+
     <div class="videos-container">
         <div class="video-item">
             <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/avatar/mimoji.mp4" type="video/mp4">
+                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/avatar/mimoji.mp4"
+                    type="video/mp4">
             </video>
             <div class="video-overlay">
                 <p>mimoji</p>
             </div>
         </div>
-        
+
         <div class="video-item">
             <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/avatar/omoji.mp4" type="video/mp4">
+                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/avatar/omoji.mp4"
+                    type="video/mp4">
             </video>
             <div class="video-overlay">
                 <p>omoji</p>
             </div>
         </div>
-        
+
         <div class="video-item">
             <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/avatar/hornor.mp4" type="video/mp4">
+                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/avatar/hornor.mp4"
+                    type="video/mp4">
             </video>
             <div class="video-overlay">
                 <p>hornor</p>
             </div>
         </div>
     </div>
-    
+
+    <h1>MetaHuman</h1>
+    <video controls>
+        <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/metahuman/metahuman_bs51.mp4"
+            type="video/mp4">
+    </video>
+
+
+    <h1>Speech Animation</h1>
+    <div class="videos-container">
+        <div class="video-item">
+            <video controls>
+                <source
+                    src="https://github.com/guyafeng/my_website/raw/refs/heads/main/speech_animation/speech_animation_compare.mp4"
+                    type="video/mp4">
+            </video>
+        </div>
+        <div class="video-item">
+            <video controls>
+                <source
+                    src="https://github.com/guyafeng/my_website/raw/refs/heads/main/speech_animation/speech_animation_realvoice.mp4"
+                    type="video/mp4">
+            </video>
+        </div>
+        <div class="video-item">
+            <video controls>
+                <source
+                    src="https://github.com/guyafeng/my_website/raw/refs/heads/main/speech_animation/speech_animation_tts.mp4"
+                    type="video/mp4">
+            </video>
+        </div>
+    </div>
+
     <footer>
         &copy; 2025 Your Website Name
     </footer>
