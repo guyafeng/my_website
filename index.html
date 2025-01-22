@@ -25,17 +25,18 @@
             display: flex;
             flex-wrap: wrap; /*允许换行*/
             justify-content: space-around; /* 平均分配剩余空间 */
+            gap: 20px;
         }
         
         .video-item {
             flex: 0 0 30%; /* 设置每个视频的宽度，可以根据需要调整 */
-            margin-bottom: 20px; /* 设置底部外边距 */
-             display: flex; /*使视频居中*/
+            margin-bottom: 100px; /* 设置底部外边距 */
+            display: flex; /*使视频居中*/
             align-items: center;  /*使视频垂直居中*/
             justify-content: center;  /*使视频水平居中*/
             overflow: hidden; /* 裁剪溢出部分 */
-            max-width: 300px;  /* 设置容器的最大宽度 */
-            max-height: 200px;  /* 设置容器的最大高度 */
+            max-width: 500px;  /* 设置容器的最大宽度 */
+            max-height: 500px;  /* 设置容器的最大高度 */
         }
         
         .video-item video {
