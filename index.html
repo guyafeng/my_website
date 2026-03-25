@@ -75,27 +75,59 @@
         .card-body { padding: 20px; }
         .card-title { font-size: 16px; font-weight: 500; }
 
+        /* 修改为每行4列 */
         .image-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px;
         }
 
-        .image-grid img { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); }
+        .image-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .image-grid img:hover {
+            transform: scale(1.02);
+        }
 
         footer { background: var(--bg-secondary); padding: 40px 20px; text-align: center; color: var(--text-secondary); margin-top: 60px; }
         footer a { color: var(--accent); text-decoration: none; }
 
+        /* 响应式设计 */
+        @media (max-width: 1200px) {
+            .image-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             header h1 { font-size: 32px; }
             .section-title { font-size: 24px; }
-            .grid, .image-grid { grid-template-columns: 1fr; }
+            .grid, .image-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .grid, .image-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         section { animation: fadeInUp 0.6s ease-out; }
 
         .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--bg-card), transparent); margin: 40px 0; }
+        
+        /* 添加加载失败时的样式 */
+        img {
+            background-color: var(--bg-secondary);
+            min-height: 200px;
+        }
     </style>
 </head>
 
@@ -110,10 +142,14 @@
     <section>
         <h2 class="section-title">衣服去褶皱</h2>
         <div class="image-grid">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/cloth_smooth/0.gif" alt="衣服去皱">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/cloth_smooth/1.gif" alt="衣服去皱">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/cloth_smooth/2.gif" alt="衣服去皱">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/cloth_smooth/3.gif" alt="衣服去皱">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/cloth_smooth/0.gif" alt="衣服去皱" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/cloth_smooth/1.gif" alt="衣服去皱" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/cloth_smooth/2.gif" alt="衣服去皱" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/cloth_smooth/3.gif" alt="衣服去皱" loading="lazy">
+			<img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/cloth_smooth/4.gif" alt="衣服去皱" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/cloth_smooth/5.gif" alt="衣服去皱" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/cloth_smooth/6.gif" alt="衣服去皱" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/cloth_smooth/7.gif" alt="衣服去皱" loading="lazy">
         </div>
     </section>
 
@@ -123,16 +159,15 @@
     <section>
         <h2 class="section-title">去唇纹</h2>
         <div class="image-grid">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/0.gif" alt="嘴唇美化">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/1.gif" alt="嘴唇美化">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/2.gif" alt="嘴唇美化">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/3.gif" alt="嘴唇美化">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/4.gif" alt="嘴唇美化">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/5.gif" alt="嘴唇美化">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/6.gif" alt="嘴唇美化">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/7.gif" alt="嘴唇美化">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/8.gif" alt="嘴唇美化">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/9.gif" alt="嘴唇美化">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/0.gif" alt="嘴唇美化" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/1.gif" alt="嘴唇美化" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/2.gif" alt="嘴唇美化" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/3.gif" alt="嘴唇美化" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/4.gif" alt="嘴唇美化" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/6.gif" alt="嘴唇美化" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/7.gif" alt="嘴唇美化" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/8.gif" alt="嘴唇美化" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/9.gif" alt="嘴唇美化" loading="lazy">
         </div>
     </section>
 
@@ -142,14 +177,14 @@
     <section>
         <h2 class="section-title">牙齿去瑕疵</h2>
         <div class="image-grid">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_beauty/switch_1.gif" alt="牙齿去瑕疵">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_beauty/switch_2.gif" alt="牙齿去瑕疵">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_beauty/switch_3.gif" alt="牙齿去瑕疵">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_beauty/switch_4.gif" alt="牙齿去瑕疵">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_beauty/switch_5.gif" alt="牙齿去瑕疵">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_beauty/switch_6.gif" alt="牙齿去瑕疵">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_beauty/switch_7.gif" alt="牙齿去瑕疵">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_beauty/switch_8.gif" alt="牙齿去瑕疵">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_beauty/switch_1.gif" alt="牙齿去瑕疵" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_beauty/switch_2.gif" alt="牙齿去瑕疵" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_beauty/switch_3.gif" alt="牙齿去瑕疵" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_beauty/switch_4.gif" alt="牙齿去瑕疵" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_beauty/switch_5.gif" alt="牙齿去瑕疵" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_beauty/switch_6.gif" alt="牙齿去瑕疵" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_beauty/switch_7.gif" alt="牙齿去瑕疵" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_beauty/switch_8.gif" alt="牙齿去瑕疵" loading="lazy">
         </div>
     </section>
 
@@ -159,11 +194,11 @@
     <section>
         <h2 class="section-title">牙齿边缘修复</h2>
         <div class="image-grid">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_repair/1.gif" alt="牙齿修复">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_repair/2.gif" alt="牙齿修复">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_repair/3.gif" alt="牙齿修复">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_repair/4.gif" alt="牙齿修复">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_repair/5.gif" alt="牙齿修复">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_repair/1.gif" alt="牙齿修复" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_repair/2.gif" alt="牙齿修复" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_repair/3.gif" alt="牙齿修复" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_repair/4.gif" alt="牙齿修复" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_repair/5.gif" alt="牙齿修复" loading="lazy">
         </div>
     </section>
 
@@ -173,16 +208,16 @@
     <section>
         <h2 class="section-title">背景去瑕疵</h2>
         <div class="image-grid">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/background_clean/0.gif" alt="背景去瑕疵">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/background_clean/1.gif" alt="背景去瑕疵">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/background_clean/2.gif" alt="背景去瑕疵">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/background_clean/3.gif" alt="背景去瑕疵">
-            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/background_clean/4.gif" alt="背景去瑕疵">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/background_clean/0.gif" alt="背景去瑕疵" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/background_clean/1.gif" alt="背景去瑕疵" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/background_clean/2.gif" alt="背景去瑕疵" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/background_clean/3.gif" alt="背景去瑕疵" loading="lazy">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/background_clean/4.gif" alt="背景去瑕疵" loading="lazy">
         </div>
     </section>
 
     <div class="divider"></div>
-	
+    
     <!-- 视频生成 -->
     <section>
         <h2 class="section-title">视频生成 · 迪士尼风格</h2>
@@ -199,13 +234,13 @@
     <!-- 人脸属性编辑 -->
     <section>
         <h2 class="section-title">人脸属性编辑</h2>
-        <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/face_edit/concatenated_image.jpg" alt="表情编辑">
+        <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/face_edit/concatenated_image.jpg" alt="表情编辑" style="width: 100%; border-radius: 12px;">
     </section>
 
     <!-- 人脸妆容迁移 -->
     <section>
         <h2 class="section-title">人脸妆容迁移</h2>
-        <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/makeup/concatenated_image.jpg" alt="妆容迁移">
+        <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/makeup/concatenated_image.jpg" alt="妆容迁移" style="width: 100%; border-radius: 12px;">
     </section>
 
     <div class="divider"></div>
