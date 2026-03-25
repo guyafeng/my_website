@@ -1,351 +1,309 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Showcase</title>
+    <title>顾亚风 | 项目展示</title>
     <style>
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #252525;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent: #00d4aa;
+            --accent-hover: #00f5c4;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            text-align: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
         }
 
         header {
-            background-color: #2c2c2c;
-            color: white;
-            padding: 1.5em;
-            font-size: 28px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .videos-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            justify-items: center;
-        }
-
-        .video-item {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 60px 20px;
+            text-align: center;
             position: relative;
-            background-color: #fff;
-            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-            transition: transform 0.2s ease-in-out;
         }
 
-        .video-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .video-item video {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .video-overlay {
+        header::before {
+            content: '';
             position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(255, 255, 255, 0.8);
-            color: #333;
-            font-size: 18px;
-            font-weight: bold;
-            padding: 6px 12px;
-            border-radius: 5px;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 212, 170, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(0, 150, 255, 0.1) 0%, transparent 50%);
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 20px auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        header h1 { font-size: 48px; font-weight: 700; margin-bottom: 10px; position: relative; }
+        header h1 span { color: var(--accent); }
+        header p { color: var(--text-secondary); font-size: 18px; }
+
+        section { max-width: 1400px; margin: 0 auto; padding: 60px 20px; }
+
+        .section-title {
+            font-size: 32px; font-weight: 600; margin-bottom: 40px;
+            display: flex; align-items: center; gap: 15px;
         }
 
-        h1 {
-            margin-top: 40px;
-            font-size: 28px;
-            color: #333;
+        .section-title::before {
+            content: ''; width: 4px; height: 32px;
+            background: var(--accent); border-radius: 2px;
         }
 
-        footer {
-            background-color: #2c2c2c;
-            color: white;
-            padding: 1.5em;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
         }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); }
+        .card img, .card video { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+        .card-body { padding: 20px; }
+        .card-title { font-size: 16px; font-weight: 500; }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+        }
+
+        .image-grid img { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); }
+
+        footer { background: var(--bg-secondary); padding: 40px 20px; text-align: center; color: var(--text-secondary); margin-top: 60px; }
+        footer a { color: var(--accent); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 32px; }
+            .section-title { font-size: 24px; }
+            .grid, .image-grid { grid-template-columns: 1fr; }
+        }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        section { animation: fadeInUp 0.6s ease-out; }
+
+        .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--bg-card), transparent); margin: 40px 0; }
     </style>
 </head>
 
 <body>
 
     <header>
-        project
+        <h1>顾亚风 <span>项目展示</span></h1>
+        <p>计算机视觉 / AIGC / 数字人驱动</p>
     </header>
 
-    <h1>背景去瑕疵</h1>
-    <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/background_clean/out0.png" alt="背景去瑕疵"
-        width="15458" height="2048">
-	<img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/background_clean/out1.png" alt="背景去瑕疵"
-        width="15458" height="2048">
-    <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/background_clean/out2.png" alt="背景去瑕疵"
-        width="15458" height="2048">
-		
-	<h1>牙齿去瑕疵</h1>
-    <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_beauty/out0.png" alt="牙齿去瑕疵"
-        width="16000" height="4000">
-    <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_beauty/out1.png" alt="牙齿去瑕疵"
-        width="16000" height="4000">
-		
-    <h1>视频生成_迪士尼风格</h1>
-    <div class="videos-container">
-        <div class="video-item">
-            <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/wan/video.mp4" type="video/mp4">
-            </video>
+    <!-- 衣服去皱 (有GIF) -->
+    <section>
+        <h2 class="section-title">衣服去褶皱</h2>
+        <div class="image-grid">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/cloth_smooth/0.gif" alt="衣服去皱">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/cloth_smooth/1.gif" alt="衣服去皱">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/cloth_smooth/2.gif" alt="衣服去皱">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/cloth_smooth/3.gif" alt="衣服去皱">
         </div>
-        <div class="video-item">
-            <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/wan/video_lora.mp4"
-                    type="video/mp4">
-            </video>
-        </div>
-        <div class="video-item">
-            <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/wan/xianxia.mp4"
-                    type="video/mp4">
-            </video>
-        </div>
-        <div class="video-item">
-            <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/wan/xianxia_lora.mp4"
-                    type="video/mp4">
-            </video>
-        </div>
-    </div>
+    </section>
 
-    <h1>人脸属性编辑</h1>
-    <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/face_edit/concatenated_image.jpg" alt="表情编辑"
-        width="2760" height="629">
+    <div class="divider"></div>
 
-    <h1>人脸妆容迁移</h1>
-    <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/makeup/concatenated_image.jpg" alt="妆容迁移"
-        width="2450" height="560">
+    <!-- 嘴唇美化 (有GIF) -->
+    <section>
+        <h2 class="section-title">去唇纹</h2>
+        <div class="image-grid">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/0.gif" alt="嘴唇美化">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/1.gif" alt="嘴唇美化">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/2.gif" alt="嘴唇美化">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/3.gif" alt="嘴唇美化">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/4.gif" alt="嘴唇美化">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/5.gif" alt="嘴唇美化">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/6.gif" alt="嘴唇美化">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/7.gif" alt="嘴唇美化">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/8.gif" alt="嘴唇美化">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/lip_smooth/9.gif" alt="嘴唇美化">
+        </div>
+    </section>
 
-    <h1>Gaussion Splatting</h1>
-    <div class="videos-container">
-        <div class="video-item">
-            <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/gaussionbs/gaussionbs_mesh.mp4"
-                    type="video/mp4">
-            </video>
-        </div>
-        <div class="video-item">
-            <video controls>
-                <source
-                    src="https://github.com/guyafeng/my_website/raw/refs/heads/main/gaussionbs/gaussionbs_render.mp4"
-                    type="video/mp4">
-            </video>
-        </div>
-    </div>
+    <div class="divider"></div>
 
-    <h1>Vr</h1>
-    <div class="videos-container">
-        <div class="video-item">
-            <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/vr/hornor_animation.mp4"
-                    type="video/mp4">
-            </video>
+    <!-- 牙齿去瑕疵 (有GIF) -->
+    <section>
+        <h2 class="section-title">牙齿去瑕疵</h2>
+        <div class="image-grid">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_beauty/switch_1.gif" alt="牙齿去瑕疵">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_beauty/switch_2.gif" alt="牙齿去瑕疵">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_beauty/switch_3.gif" alt="牙齿去瑕疵">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_beauty/switch_4.gif" alt="牙齿去瑕疵">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_beauty/switch_5.gif" alt="牙齿去瑕疵">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_beauty/switch_6.gif" alt="牙齿去瑕疵">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_beauty/switch_7.gif" alt="牙齿去瑕疵">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_beauty/switch_8.gif" alt="牙齿去瑕疵">
         </div>
-    </div>
+    </section>
 
-    <h1>Speech Animation</h1>
-    <div class="videos-container">
-        <div class="video-item">
-            <video controls>
-                <source
-                    src="https://github.com/guyafeng/my_website/raw/refs/heads/main/speech_animation/speech_animation_compare.mp4"
-                    type="video/mp4">
-            </video>
-        </div>
-        <div class="video-item">
-            <video controls>
-                <source
-                    src="https://github.com/guyafeng/my_website/raw/refs/heads/main/speech_animation/speech_animation_realvoice.mp4"
-                    type="video/mp4">
-            </video>
-        </div>
-        <div class="video-item">
-            <video controls>
-                <source
-                    src="https://github.com/guyafeng/my_website/raw/refs/heads/main/speech_animation/speech_animation_tts.mp4"
-                    type="video/mp4">
-            </video>
-        </div>
-    </div>
+    <div class="divider"></div>
 
-    <h1>MetaHuman</h1>
-    <div class="videos-container">
-        <div class="video-item">
-            <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/metahuman/metahuman_bs51.mp4"
-                    type="video/mp4">
-            </video>
+    <!-- 牙齿修复 (有GIF) -->
+    <section>
+        <h2 class="section-title">牙齿边缘修复</h2>
+        <div class="image-grid">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_repair/1.gif" alt="牙齿修复">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_repair/2.gif" alt="牙齿修复">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_repair/3.gif" alt="牙齿修复">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_repair/4.gif" alt="牙齿修复">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/teeth_repair/5.gif" alt="牙齿修复">
         </div>
-    </div>
+    </section>
 
-    <h1>Avatar</h1>
-	<div class="videos-container">
-        <div class="video-item">
-            <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/avatar/apple_compare.mp4"
-                    type="video/mp4">
-            </video>
-        </div>
-    </div>
-    <div class="videos-container">
-        <div class="video-item">
-            <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/avatar/avatar.mp4"
-                    type="video/mp4">
-            </video>
-        </div>
-        <div class="video-item">
-            <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/avatar/avatar_compare.mp4"
-                    type="video/mp4">
-            </video>
-        </div>
-    </div>
+    <div class="divider"></div>
 
-    <div class="videos-container">
-        <div class="video-item">
-            <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/avatar/mimoji.mp4"
-                    type="video/mp4">
-            </video>
-            <div class="video-overlay">
-                <p>mimoji</p>
-            </div>
+    <!-- 背景去瑕疵 (有GIF) -->
+    <section>
+        <h2 class="section-title">背景去瑕疵</h2>
+        <div class="image-grid">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/background_clean/0.gif" alt="背景去瑕疵">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/background_clean/1.gif" alt="背景去瑕疵">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/background_clean/2.gif" alt="背景去瑕疵">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/background_clean/3.gif" alt="背景去瑕疵">
+            <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/background_clean/4.gif" alt="背景去瑕疵">
         </div>
+    </section>
 
-        <div class="video-item">
-            <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/avatar/omoji.mp4"
-                    type="video/mp4">
-            </video>
-            <div class="video-overlay">
-                <p>omoji</p>
-            </div>
+    <div class="divider"></div>
+	
+    <!-- 视频生成 -->
+    <section>
+        <h2 class="section-title">视频生成 · 迪士尼风格</h2>
+        <div class="grid">
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/wan/video.mp4" type="video/mp4"></video></div>
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/wan/video_lora.mp4" type="video/mp4"></video></div>
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/wan/xianxia.mp4" type="video/mp4"></video></div>
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/wan/xianxia_lora.mp4" type="video/mp4"></video></div>
         </div>
+    </section>
 
-        <div class="video-item">
-            <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/avatar/hornor.mp4"
-                    type="video/mp4">
-            </video>
-            <div class="video-overlay">
-                <p>hornor</p>
-            </div>
-        </div>
-    </div>
+    <div class="divider"></div>
 
-    <h1>Mesh</h1>
-    <div class="videos-container">
-        <div class="video-item">
-            <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/mesh/mesh_fullface_subject1.mp4"
-                    type="video/mp4">
-            </video>
-        </div>
-        <div class="video-item">
-            <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/mesh/mesh_fullface_subject2.mp4"
-                    type="video/mp4">
-            </video>
-        </div>
-        <div class="video-item">
-            <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/mesh/mesh_fullface_subject3.mp4"
-                    type="video/mp4">
-            </video>
-        </div>
-        <div class="video-item">
-            <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/mesh/mesh_fullface_subject4.mp4"
-                    type="video/mp4">
-            </video>
-        </div>
-    </div>
+    <!-- 人脸属性编辑 -->
+    <section>
+        <h2 class="section-title">人脸属性编辑</h2>
+        <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/face_edit/concatenated_image.jpg" alt="表情编辑">
+    </section>
 
-    <div class="videos-container">
-        <div class="video-item">
-            <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/mesh/mesh3d_subject1.mp4"
-                    type="video/mp4">
-            </video>
-        </div>
+    <!-- 人脸妆容迁移 -->
+    <section>
+        <h2 class="section-title">人脸妆容迁移</h2>
+        <img src="https://github.com/guyafeng/my_website/raw/refs/heads/main/makeup/concatenated_image.jpg" alt="妆容迁移">
+    </section>
 
-        <div class="video-item">
-            <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/mesh/mesh3d_subject2.mp4"
-                    type="video/mp4">
-            </video>
-        </div>
+    <div class="divider"></div>
 
-        <div class="video-item">
-            <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/mesh/mesh3d_subject3.mp4"
-                    type="video/mp4">
-            </video>
+    <!-- Gaussian Splatting -->
+    <section>
+        <h2 class="section-title">Gaussian Splatting</h2>
+        <div class="grid">
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/gaussionbs/gaussionbs_mesh.mp4" type="video/mp4"></video></div>
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/gaussionbs/gaussionbs_render.mp4" type="video/mp4"></video></div>
         </div>
+    </section>
 
-        <div class="video-item">
-            <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/mesh/mesh3d_subject4.mp4"
-                    type="video/mp4">
-            </video>
-        </div>
-    </div>
+    <div class="divider"></div>
 
-    <h1>Landmark</h1>
-    <div class="videos-container">
-        <div class="video-item">
-            <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/landmark/subject1.mp4"
-                    type="video/mp4">
-            </video>
+    <!-- VR -->
+    <section>
+        <h2 class="section-title">VR Avatar</h2>
+        <div class="grid">
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/vr/hornor_animation.mp4" type="video/mp4"></video></div>
         </div>
-        <div class="video-item">
-            <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/landmark/subject2.mp4"
-                    type="video/mp4">
-            </video>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Speech Animation -->
+    <section>
+        <h2 class="section-title">Speech Animation</h2>
+        <div class="grid">
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/speech_animation/speech_animation_compare.mp4" type="video/mp4"></video></div>
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/speech_animation/speech_animation_realvoice.mp4" type="video/mp4"></video></div>
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/speech_animation/speech_animation_tts.mp4" type="video/mp4"></video></div>
         </div>
-        <div class="video-item">
-            <video controls>
-                <source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/landmark/subject3.mp4"
-                    type="video/mp4">
-            </video>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- MetaHuman -->
+    <section>
+        <h2 class="section-title">MetaHuman</h2>
+        <div class="grid">
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/metahuman/metahuman_bs51.mp4" type="video/mp4"></video></div>
         </div>
-    </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Avatar -->
+    <section>
+        <h2 class="section-title">Avatar 面部驱动</h2>
+        <div class="grid">
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/avatar/apple_compare.mp4" type="video/mp4"></video></div>
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/avatar/avatar.mp4" type="video/mp4"></video></div>
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/avatar/avatar_compare.mp4" type="video/mp4"></video></div>
+        </div>
+        <h3 style="margin: 40px 0 20px; color: var(--text-secondary);">厂商定制</h3>
+        <div class="grid">
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/avatar/mimoji.mp4" type="video/mp4"></video><div class="card-body"><div class="card-title">Mimoji</div></div></div>
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/avatar/omoji.mp4" type="video/mp4"></video><div class="card-body"><div class="card-title">Omoji</div></div></div>
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/avatar/hornor.mp4" type="video/mp4"></video><div class="card-body"><div class="card-title">Honor</div></div></div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Face Mesh -->
+    <section>
+        <h2 class="section-title">Face Mesh</h2>
+        <div class="grid">
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/mesh/mesh_fullface_subject1.mp4" type="video/mp4"></video></div>
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/mesh/mesh_fullface_subject2.mp4" type="video/mp4"></video></div>
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/mesh/mesh_fullface_subject3.mp4" type="video/mp4"></video></div>
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/mesh/mesh_fullface_subject4.mp4" type="video/mp4"></video></div>
+        </div>
+        <h3 style="margin: 40px 0 20px; color: var(--text-secondary);">3D Mesh</h3>
+        <div class="grid">
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/mesh/mesh3d_subject1.mp4" type="video/mp4"></video></div>
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/mesh/mesh3d_subject2.mp4" type="video/mp4"></video></div>
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/mesh/mesh3d_subject3.mp4" type="video/mp4"></video></div>
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/mesh/mesh3d_subject4.mp4" type="video/mp4"></video></div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Landmark -->
+    <section>
+        <h2 class="section-title">Face Landmark</h2>
+        <div class="grid">
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/landmark/subject1.mp4" type="video/mp4"></video></div>
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/landmark/subject2.mp4" type="video/mp4"></video></div>
+            <div class="card"><video controls playsinline><source src="https://github.com/guyafeng/my_website/raw/refs/heads/main/landmark/subject3.mp4" type="video/mp4"></video></div>
+        </div>
+    </section>
 
     <footer>
-        &copy; 2025 Your Website Name
+        <p>© 2025 顾亚风 | <a href="https://guyafeng.github.io/my_website">GitHub</a></p>
     </footer>
 
 </body>
-
 </html>
